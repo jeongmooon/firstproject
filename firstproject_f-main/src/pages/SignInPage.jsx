@@ -1,10 +1,10 @@
 import React from "react";
 import SignInContainer from "../containers/auth/SignInContainer";
 
-function SignInPage() {
+function SignInPage({ ...rest }) {
   return (
     <>
-      <SignInContainer />
+      <SignInContainer {...rest} />
     </>
   );
 }

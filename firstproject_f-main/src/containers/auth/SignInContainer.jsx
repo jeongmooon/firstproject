@@ -3,7 +3,7 @@ import SignInComponent from "../../components/auth/SignInComponent";
 import { useNavigate } from "react-router-dom";
 import client from "../../libs/styles/api/clienet";
 
-function SignInContainer() {
+function SignInContainer({ setUser, setIsLoggined }) {
   const navigate = useNavigate();
 
   const [userInfo, setUserInfo] = useState({
@@ -42,10 +42,17 @@ function SignInContainer() {
           localStorage.setItem("accessToken", accessToken); //setItem 넣기 getItem 빼기
           client.defaults.headers.common["Authorization"] = `${accessToken}`;
 
+          const result = await client.get("/users");
+          const targetUser = result.data.data;
+          console.log(targetUser);
+          setUser(targetUser);
+          setIsLoggined(true);
+
           alert("로그인 완료");
           navigate("/");
         }
       } catch (error) {
+        console.log(error);
         if (error.response.status === 400) {
           alert("존재 하지 않는 계정입니다");
           setUserInfo({

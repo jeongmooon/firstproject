@@ -3,7 +3,7 @@ const router = express.Router();
 const {
   createUser,
   loginUser,
-} = require("../../controllers/users/usersController");
+} = require("../../controllers/auth/authController");
 
 // 회원가입
 router.post("/signup", createUser);

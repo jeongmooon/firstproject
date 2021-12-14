@@ -43,7 +43,6 @@ const StlyedButton = styled.button`
 function SignInComponent({ userInfo, onClickSubmit, onChangeInput }) {
   const { email, password } = userInfo;
 
-  console.log(userInfo);
   return (
     <>
       <AuthTemplate>
